@@ -1,8 +1,8 @@
-package kr.hhplus.be.server.layered.domain.productinventoryhistory;
+package kr.hhplus.be.server.layered.domain.coupon;
 
 import jakarta.persistence.*;
 import kr.hhplus.be.server.layered.domain.order.Order;
-import kr.hhplus.be.server.layered.domain.product.Product;
+import kr.hhplus.be.server.layered.domain.user.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,27 +14,25 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "PRODUCT_INVENTORY_HISTORY")
-public class ProductInventoryHistory {
+@Table(name = "USER_COUPON_HISTORY")
+public class UserCouponHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @Enumerated(EnumType.STRING)
-    private ChangeType changeType;
-
-    private Long quantityChange;
-
-    private Long quantityBefore;
-
-    private Long quantityAfter;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "related_order_id")
+    @JoinColumn(name = "user_coupon_id")
+    private UserCoupon userCoupon;
+
+    @Enumerated(EnumType.STRING)
+    private UserCouponStatus status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
     private Order order;
 
     private LocalDateTime createdDate;

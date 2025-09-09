@@ -1,22 +1,21 @@
-package kr.hhplus.be.server.layered.domain.couponissurancehistory;
+package kr.hhplus.be.server.layered.domain.coupon;
 
 import jakarta.persistence.*;
 import kr.hhplus.be.server.layered.domain.coupon.Coupon;
-import kr.hhplus.be.server.layered.domain.user.User;
-import kr.hhplus.be.server.layered.domain.usercoupon.UserCoupon;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "COUPON_ISSURANCE_HISTORY")
-public class CouponIssuranceHistory {
+@Table(name = "COUPON_HISTORY")
+public class CouponHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,16 +24,15 @@ public class CouponIssuranceHistory {
     @JoinColumn(name = "coupon_id")
     private Coupon coupon;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_coupon_id")
-    private UserCoupon userCoupon;
+    private BigDecimal discountRate;
 
-    @Enumerated(EnumType.STRING)
-    private CouponIssuranceStatus status;
+    private Long quantity;
+
+    private LocalDateTime expireDate;
+
+    private String updatedBy;
 
     private LocalDateTime createdDate;
 }

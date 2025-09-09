@@ -1,9 +1,7 @@
-package kr.hhplus.be.server.layered.domain.usercouponhistory;
+package kr.hhplus.be.server.layered.domain.coupon;
 
 import jakarta.persistence.*;
-import kr.hhplus.be.server.layered.domain.order.Order;
 import kr.hhplus.be.server.layered.domain.user.User;
-import kr.hhplus.be.server.layered.domain.usercoupon.UserCoupon;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +13,8 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "USER_COUPON_HISTORY")
-public class UserCouponHistory {
+@Table(name = "USER_COUPONS")
+public class UserCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,15 +24,12 @@ public class UserCouponHistory {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_coupon_id")
-    private UserCoupon userCoupon;
+    @JoinColumn(name = "coupon_id")
+    private Coupon coupon;
 
-    @Enumerated(EnumType.STRING)
-    private UserCouponStatus status;
+    private String usedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    private LocalDateTime usedDate;
 
-    private LocalDateTime createdDate;
+    private LocalDateTime issueDate;
 }

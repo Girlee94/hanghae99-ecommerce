@@ -1,8 +1,7 @@
-package kr.hhplus.be.server.layered.domain.balancehistory;
+package kr.hhplus.be.server.layered.domain.user;
 
 import jakarta.persistence.*;
 import kr.hhplus.be.server.layered.domain.order.Order;
-import kr.hhplus.be.server.layered.domain.user.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

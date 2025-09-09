@@ -1,4 +1,4 @@
-package kr.hhplus.be.server.layered.domain.producthistory;
+package kr.hhplus.be.server.layered.domain.order;
 
 import jakarta.persistence.*;
 import kr.hhplus.be.server.layered.domain.product.Product;
@@ -8,31 +8,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "PRODUCT_HISTORY")
-public class ProductHistory {
+@Table(name = "ORDER_ITEMS")
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
-    private String name;
+    private Integer quantity;
 
-    private BigDecimal price;
-
-    private String updatedBy;
-
-    private String productType;
-
-    private String productCategory;
-
-    private LocalDateTime createdDate;
+    private BigDecimal pricePerItem;
 }

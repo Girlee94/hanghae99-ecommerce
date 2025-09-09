@@ -1,4 +1,4 @@
-package kr.hhplus.be.server.layered.domain.couponissurancehistory;
+package kr.hhplus.be.server.layered.domain.coupon;
 
 public enum CouponIssuranceStatus {
     SUCCESS,

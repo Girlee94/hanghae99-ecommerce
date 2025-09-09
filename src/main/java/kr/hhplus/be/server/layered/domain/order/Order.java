@@ -3,7 +3,7 @@ package kr.hhplus.be.server.layered.domain.order;
 import jakarta.persistence.*;
 import kr.hhplus.be.server.layered.domain.BaseEntity;
 import kr.hhplus.be.server.layered.domain.user.User;
-import kr.hhplus.be.server.layered.domain.usercoupon.UserCoupon;
+import kr.hhplus.be.server.layered.domain.coupon.UserCoupon;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

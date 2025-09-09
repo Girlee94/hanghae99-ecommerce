@@ -1,4 +1,4 @@
-package kr.hhplus.be.server.layered.domain.usercouponhistory;
+package kr.hhplus.be.server.layered.domain.coupon;
 
 public enum UserCouponStatus {
     ISSUED,
